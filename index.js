@@ -1,19 +1,17 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {Triangle, Square, Circle} = require('./lib/shapes');
-
-
+const { Triangle, Square, Circle } = require('./lib/shapes');
 
 const questions = [
     {
         type: 'input',
-        name: 'characters',
-        message: 'Type 3 letters:',
+        name: 'text',
+        message: 'Enter up to 3 character for your logo:',
         validate: function (input) {
-            if (input.length <= '3') {
+            if (input.length <= 3) {
                 return true;
             } else {
-                return 'You must type 3 characters or less'
+                return 'Input must be 3 characters of less.'
             }
         }
     },
@@ -25,23 +23,31 @@ const questions = [
     {
         type: 'list',
         name: 'shape',
-        message: ['Triangle', 'Circle', 'Square']
+        message: 'Pick a shape?',
+        choices: ['Triangle', 'Circle', 'Square']
     },
     {
         type: 'input',
         name: 'shape_color',
         message: 'Wat color do you want the shape (OR a hexdecimal number)'
-    },
-];
+    }
+]
 
 
 inquirer
-  .prompt(questions)
+    .prompt(questions)
     /* Pass your questions in here */
-  .then((answers) => {
-    // Use user feedback for... whatever!!
-    var characters = answers.characters.toUpperCase();
-    var text_color = answers.text_color;
-
+    .then((answers) => {
+        console.log(answers);
+        let shape;
+        // Use user feedback for... whatever!!
+        let text = answers.text.toUpperCase();
+        if (answers.shape === 'Triangle') {
+            return shape = new Triangle();
+        } else if (answers.shape === 'Circle') {
+            return shape = new Circle();
+        } else {
+            return shape = new Square();
+        };
     }
-  );
+    );
