@@ -46,8 +46,10 @@ inquirer
             return shape = new Triangle();
         } else if (answers.shape === 'Circle') {
             return shape = new Circle();
-        } else {
+        } else if (answers.shape === 'Square') {
             return shape = new Square();
-        };
+        } else {
+            console.log(text);
+        }
     }
     );
