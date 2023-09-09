@@ -50,6 +50,9 @@ inquirer
             return shape = new Square();
         } else {
             console.log(text);
+            fs.writeFile('logo.svg', (err) =>
+                err ? console.log(err) : console.log('Success')
+            )
         }
     }
     );
