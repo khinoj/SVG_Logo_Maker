@@ -43,16 +43,23 @@ inquirer
         // Use user feedback for... whatever!!
         let text = answers.text.toUpperCase();
         if (answers.shape === 'Triangle') {
-            return shape = new Triangle();
+            shape = new Triangle();
         } else if (answers.shape === 'Circle') {
-            return shape = new Circle();
+            shape = new Circle();
         } else if (answers.shape === 'Square') {
-            return shape = new Square();
-        } else {
-            console.log(text);
-            fs.writeFile('logo.svg', (err) =>
-                err ? console.log(err) : console.log('Success')
-            )
+            shape = new Square();
         }
+        shape.setColor(answers.shape_color)
+        let templates = `<svg version="1.1"
+        width="300" height="200"
+        xmlns="http://www.w3.org/2000/svg">
+        ${shape.render()}
+        <text x="150" y="125" font-size="60" text-anchor="middle" fill="${answers.text_color}">${text}</text>
+   
+        </svg>`
+        console.log(text);
+        fs.writeFile('./lib/svg/logo.svg', templates, (err) =>
+            err ? console.log(err) : console.log('Success')
+        )
     }
     );
