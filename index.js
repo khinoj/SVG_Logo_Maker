@@ -59,7 +59,7 @@ inquirer
         </svg>`
         console.log(text);
         fs.writeFile('./lib/svg/logo.svg', templates, (err) =>
-            err ? console.log(err) : console.log('Success')
+            err ? console.log(err) : console.log('Generated logo.svg')
         )
     }
     );
