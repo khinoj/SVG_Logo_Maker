@@ -2,8 +2,10 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const { Triangle, Square, Circle } = require('./lib/shapes');
 
+
+// questions for the user to fill out
 const questions = [
-    {
+    {   // user types 3 letter input
         type: 'input',
         name: 'text',
         message: 'Enter up to 3 character for your logo:',
@@ -15,18 +17,18 @@ const questions = [
             }
         }
     },
-    {
+    {   // users types color for letters
         type: 'input',
         name: 'text_color',
         message: 'Pick your text color (OR a hexadecimal number)'
     },
-    {
+    {   // user picks shape.
         type: 'list',
         name: 'shape',
         message: 'Pick a shape?',
         choices: ['Triangle', 'Circle', 'Square']
     },
-    {
+    {   // user types shape color.
         type: 'input',
         name: 'shape_color',
         message: 'Wat color do you want the shape (OR a hexdecimal number)'
